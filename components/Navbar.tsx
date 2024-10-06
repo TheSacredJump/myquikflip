@@ -78,9 +78,9 @@ const Navbar = () => {
               </span>
             </Link>
             <div className="hidden md:flex md:space-x-8 ml-10">
-              <NavLink href="/convert" isScrolled={isScrolled} itemVariants={itemVariants}>Convert</NavLink>
-              <NavLink href="/about" isScrolled={isScrolled} itemVariants={itemVariants}>About</NavLink>
-              <NavLink href="/how-it-works" isScrolled={isScrolled} itemVariants={itemVariants}>How It Works</NavLink>
+              <NavLink href="/convert" isScrolled={isScrolled} itemVariants={itemVariants}>Features</NavLink>
+              <NavLink href="/about" isScrolled={isScrolled} itemVariants={itemVariants}>Demo</NavLink>
+              <NavLink href="/how-it-works" isScrolled={isScrolled} itemVariants={itemVariants}>Pricing</NavLink>
               <NavLink href="/contact" isScrolled={isScrolled} itemVariants={itemVariants}>Contact</NavLink>
             </div>
           </motion.div>
