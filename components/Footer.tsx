@@ -55,10 +55,10 @@ const Footer = () => {
           <motion.div variants={itemVariants}>
             <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link href="/about" className="hover:text-blue-400 transition-colors">Features</Link></li>
-              <li><Link href="/how-it-works" className="hover:text-blue-400 transition-colors">Demo</Link></li>
-              <li><Link href="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link></li>
-              <li><Link href="/contact" className="hover:text-blue-400 transition-colors">Join</Link></li>
+              <li><Link href="/#features" className="hover:text-blue-400 transition-colors">Features</Link></li>
+              <li><Link href="/#demo" className="hover:text-blue-400 transition-colors">Demo</Link></li>
+              <li><Link href="/#faq" className="hover:text-blue-400 transition-colors">FAQ</Link></li>
+              <li><Link href="/get-started" className="hover:text-blue-400 transition-colors">Join</Link></li>
             </ul>
           </motion.div>
           <motion.div variants={itemVariants}>

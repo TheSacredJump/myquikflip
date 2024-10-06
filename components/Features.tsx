@@ -49,6 +49,7 @@ const FeatureContent = ({ title, description, splineScene }: any) => {
       category: "Instant Conversion",
       title: "Convert Crypto to Fiat in Seconds",
       src: "https://prod.spline.design/9RHTTHtntQrUmjdu/scene.splinecode", // Use your Spline scene URL here
+      imageUrl: "/Transaction.png",
       content: (
         <FeatureContent
           title="Lightning-Fast Transactions"
@@ -61,6 +62,7 @@ const FeatureContent = ({ title, description, splineScene }: any) => {
     category: "Multiple Currencies",
     title: "Support for Major Cryptocurrencies",
     src: "https://prod.spline.design/5dChaHNC0IF2STGj/scene.splinecode",
+    imageUrl: "/Multiple.png",
     content: (
       <FeatureContent
         title="Diverse Crypto Portfolio"
@@ -73,6 +75,7 @@ const FeatureContent = ({ title, description, splineScene }: any) => {
     category: "Security",
     title: "Bank-Grade Security for Your Assets",
     src: "https://prod.spline.design/5rIxZWqIatwHAvak/scene.splinecode",
+    imageUrl: "/Bank.png",
     content: (
       <FeatureContent
         title="Your Security is Our Priority"
@@ -85,6 +88,7 @@ const FeatureContent = ({ title, description, splineScene }: any) => {
     category: "Low Fees",
     title: "Competitive Rates and Low Fees",
     src: "https://prod.spline.design/2bmt3o7zZI47WyqA/scene.splinecode",
+    imageUrl: "/Fees.png",
     content: (
       <FeatureContent
         title="More Value for Your Crypto"
@@ -97,6 +101,7 @@ const FeatureContent = ({ title, description, splineScene }: any) => {
     category: "User-Friendly",
     title: "Intuitive Interface for All Users",
     src: "https://prod.spline.design/Nzy0mCIkimZIs4hA/scene.splinecode",
+    imageUrl: "/Interface.png",
     content: (
       <FeatureContent
         title="Simplicity Meets Functionality"
@@ -109,6 +114,7 @@ const FeatureContent = ({ title, description, splineScene }: any) => {
     category: "24/7 Support",
     title: "Round-the-Clock Customer Service",
     src: "https://prod.spline.design/SZkOc6pEa02HapmL/scene.splinecode",
+    imageUrl: "/Clock.png",
     content: (
       <FeatureContent
         title="We're Here When You Need Us"

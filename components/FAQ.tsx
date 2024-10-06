@@ -94,7 +94,7 @@ const FAQ = () => {
   );
 
   return (
-    <div className="bg-gray-950 min-h-screen py-12 px-4 sm:px-6 lg:px-8 mt-10 w-[95%] mx-auto">
+    <div id="faq" className="bg-gray-950 min-h-screen py-12 px-4 sm:px-6 lg:px-8 mt-10 w-[95%] mx-auto">
       <div className="max-w-3xl mx-auto">
         <motion.h1
           className="text-4xl font-bold text-white mb-8 text-center"
