@@ -5,6 +5,8 @@ import React, {
   useState,
   createContext,
   useContext,
+  lazy,
+  Suspense
 } from "react";
 import {
   IconArrowNarrowLeft,
@@ -15,7 +17,10 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Image, { ImageProps } from "next/image";
 import { useOutsideClick } from "../../hooks/use-outside-click";
-import Spline from "@splinetool/react-spline";
+import { useInView } from "react-intersection-observer";
+
+// Lazy load Spline component
+const Spline = lazy(() => import("@splinetool/react-spline"));
 
 interface CarouselProps {
   items: JSX.Element[];
@@ -36,6 +41,16 @@ export const CarouselContext = createContext<{
   onCardClose: () => {},
   currentIndex: 0,
 });
+
+const SplinePlaceholder = () => (
+  <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+    <div className="relative w-16 h-16">
+      <div className="absolute top-0 left-0 right-0 bottom-0 border-4 border-blue-500 border-opacity-20 rounded-full"></div>
+      <div className="absolute top-0 left-0 right-0 bottom-0 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  </div>
+);
+
 
 export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const carouselRef = React.useRef<HTMLDivElement>(null);
@@ -166,6 +181,10 @@ export const Card = ({
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { onCardClose, currentIndex } = useContext(CarouselContext);
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -212,7 +231,7 @@ export const Card = ({
               exit={{ opacity: 0 }}
               ref={containerRef}
               layoutId={layout ? `card-${card.title}` : undefined}
-              className="max-w-5xl mx-auto bg-white dark:bg-neutral-900 h-fit  z-[60] my-10 p-4 md:p-10 rounded-3xl font-sans relative"
+              className="max-w-5xl mx-auto bg-white dark:bg-neutral-900 h-fit z-[60] my-10 p-4 md:p-10 rounded-3xl font-sans relative"
             >
               <button
                 className="sticky top-4 h-8 w-8 right-0 ml-auto bg-black dark:bg-white rounded-full flex items-center justify-center"
@@ -238,6 +257,7 @@ export const Card = ({
         )}
       </AnimatePresence>
       <motion.button
+        ref={ref}
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
         className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
@@ -258,7 +278,13 @@ export const Card = ({
           </motion.p>
         </div>
         <div className="absolute inset-0 z-10">
-          <Spline scene={card.src} />
+          {inView ? (
+            <Suspense fallback={<SplinePlaceholder />}>
+              <Spline scene={card.src} />
+            </Suspense>
+          ) : (
+            <SplinePlaceholder />
+          )}
         </div>
       </motion.button>
     </>

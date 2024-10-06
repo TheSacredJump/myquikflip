@@ -1,9 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Carousel, Card } from "./ui/apple-cards-carousel";
-import Spline from "@splinetool/react-spline";
+
+// Lazy load the Spline component
+const Spline = lazy(() => import("@splinetool/react-spline"));
+
+// Placeholder component
+const SplinePlaceholder = () => (
+  <div className="w-full h-[300px] md:h-[500px] bg-gray-800 animate-pulse flex items-center justify-center">
+    <p className="text-white">Loading 3D scene...</p>
+  </div>
+);
 
 export function QuikFlipFeaturesCarousel() {
   const cards = data.map((card, index) => (
@@ -20,18 +29,20 @@ export function QuikFlipFeaturesCarousel() {
 }
 
 const FeatureContent = ({ title, description, splineScene }: any) => {
-    return (
-      <div className="bg-[#2A2A2A] p-8 md:p-14 rounded-3xl mb-4">
-        <p className="text-neutral-300 text-base md:text-2xl font-sans max-w-3xl mx-auto">
-          <span className="font-bold text-white">{title}</span>{" "}
-          {description}
-        </p>
-        <div className="w-full h-[300px] md:h-[500px] mt-8">
+  return (
+    <div className="bg-[#2A2A2A] p-8 md:p-14 rounded-3xl mb-4">
+      <p className="text-neutral-300 text-base md:text-2xl font-sans max-w-3xl mx-auto">
+        <span className="font-bold text-white">{title}</span>{" "}
+        {description}
+      </p>
+      <div className="w-full h-[300px] md:h-[500px] mt-8">
+        <Suspense fallback={<SplinePlaceholder />}>
           <Spline scene={splineScene} />
-        </div>
+        </Suspense>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
   const data = [
     {
