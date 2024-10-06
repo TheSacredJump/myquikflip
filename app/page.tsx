@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import QuikFlipDifference from "@/components/QuikFlipDifference";
 import PricingSection from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
+import ContactForm from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
     <PricingSection />
     <Promotion />
     <FAQ />
+    <ContactForm />
     <Footer />
     </>
   );
