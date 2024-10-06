@@ -19,6 +19,7 @@ export default function Hero() {
 
   return (
     <div
+      id="hero"
       className="h-[400vh] bg-gray-950 w-full rounded-md relative pt-40 overflow-clip border-b border-gray-800/25 "
       ref={ref}
     >

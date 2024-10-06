@@ -71,12 +71,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <motion.div variants={itemVariants} className="flex items-center">
-            <Link href="/" className="flex items-center mr-8">
-              <Image src="/lightlogo.png" alt="Logo" width={32} height={32} className="mr-2" />
-              <span className="text-2xl font-bold text-white">
-                <span className="text-blue-500">Quik</span>Flip
-              </span>
-            </Link>
+            <HomeLink isScrolled={isScrolled} />
             <div className="hidden md:flex md:space-x-8 ml-10">
               <NavLink href="/#features" isScrolled={isScrolled} itemVariants={itemVariants}>Features</NavLink>
               <NavLink href="/#demo" isScrolled={isScrolled} itemVariants={itemVariants}>Demo</NavLink>
@@ -136,6 +131,19 @@ const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, target
       });
     }
   };
+
+const HomeLink = ({ isScrolled }: { isScrolled: boolean }) => (
+    <a 
+      href="/#hero" 
+      onClick={(e) => smoothScroll(e, 'hero')}
+      className="flex items-center mr-8"
+    >
+      <Image src="/lightlogo.png" alt="Logo" width={32} height={32} className="mr-2" />
+      <span className="text-2xl font-bold text-white">
+        <span className={`${isScrolled ? 'text-blue-400' : 'text-blue-500'}`}>Quik</span>Flip
+      </span>
+    </a>
+  );
 
 const NavLink = ({ href, children, isScrolled, itemVariants}: { href: string, children: React.ReactNode, isScrolled: boolean, itemVariants: any }) => (
     <motion.div variants={itemVariants}>
