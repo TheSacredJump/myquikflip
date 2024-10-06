@@ -10,7 +10,7 @@ export function QuikFlipFeaturesCarousel() {
     <Card key={card.src} card={card} index={index} />
   ));
   return (
-    <div className="w-full h-full py-20 bg-gray-950">
+    <div id='features' className="w-full h-full py-20 bg-gray-950">
       <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-white font-sans">
         Discover QuikFlip's Features
       </h2>

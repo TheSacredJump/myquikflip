@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Highlight = () => {
   return (
-    <div className="flex flex-col overflow-hidden">
+    <div id='demo' className="flex flex-col overflow-hidden">
       <ContainerScroll
         titleComponent={
           <>

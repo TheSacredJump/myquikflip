@@ -78,10 +78,10 @@ const Navbar = () => {
               </span>
             </Link>
             <div className="hidden md:flex md:space-x-8 ml-10">
-              <NavLink href="/convert" isScrolled={isScrolled} itemVariants={itemVariants}>Features</NavLink>
-              <NavLink href="/about" isScrolled={isScrolled} itemVariants={itemVariants}>Demo</NavLink>
-              <NavLink href="/how-it-works" isScrolled={isScrolled} itemVariants={itemVariants}>Pricing</NavLink>
-              <NavLink href="/contact" isScrolled={isScrolled} itemVariants={itemVariants}>Contact</NavLink>
+              <NavLink href="/#features" isScrolled={isScrolled} itemVariants={itemVariants}>Features</NavLink>
+              <NavLink href="/#demo" isScrolled={isScrolled} itemVariants={itemVariants}>Demo</NavLink>
+              <NavLink href="/#pricing" isScrolled={isScrolled} itemVariants={itemVariants}>Pricing</NavLink>
+              <NavLink href="/#contact" isScrolled={isScrolled} itemVariants={itemVariants}>Contact</NavLink>
             </div>
           </motion.div>
           <motion.div variants={itemVariants} className="hidden md:flex items-center space-x-4">
@@ -126,22 +126,41 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ href, children, isScrolled, itemVariants}: { href: string, children: React.ReactNode, isScrolled: boolean, itemVariants: any }) => (
-  <motion.div variants={itemVariants}>
-    <Link href={href} className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-      isScrolled ? 'text-white hover:text-white hover:bg-blue-500 rounded p-1 pb-1 px-2 duration-300' : 'text-white hover:text-blue-200 duration-300'
-    }`}>
-      {children}
-    </Link>
-  </motion.div>
-);
+const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, targetId: string) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 80, // Adjust this value based on your navbar height
+        behavior: 'smooth'
+      });
+    }
+  };
 
-const MobileNavLink = ({ href, children, isScrolled }: { href: string, children: React.ReactNode, isScrolled: boolean }) => (
-  <Link href={href} className={`block px-3 py-2 rounded-md text-base font-medium ${
-    isScrolled ? 'text-blue-400 hover:bg-gray-800 hover:text-blue-300 duration-300' : 'text-white hover:bg-gray-800 hover:text-blue-300 duration-300'
-  }`}>
-    {children}
-  </Link>
-);
+const NavLink = ({ href, children, isScrolled, itemVariants}: { href: string, children: React.ReactNode, isScrolled: boolean, itemVariants: any }) => (
+    <motion.div variants={itemVariants}>
+      <a 
+        href={href} 
+        onClick={(e) => smoothScroll(e, href.replace('/#', ''))}
+        className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+          isScrolled ? 'text-white hover:text-white hover:bg-blue-500 rounded p-1 pb-1 px-2 duration-300' : 'text-white hover:text-blue-200 duration-300'
+        }`}
+      >
+        {children}
+      </a>
+    </motion.div>
+  );
+  
+  const MobileNavLink = ({ href, children, isScrolled }: { href: string, children: React.ReactNode, isScrolled: boolean }) => (
+    <a 
+      href={href} 
+      onClick={(e) => smoothScroll(e, href.replace('/#', ''))}
+      className={`block px-3 py-2 rounded-md text-base font-medium ${
+        isScrolled ? 'text-blue-400 hover:bg-gray-800 hover:text-blue-300 duration-300' : 'text-white hover:bg-gray-800 hover:text-blue-300 duration-300'
+      }`}
+    >
+      {children}
+    </a>
+  );
 
 export default Navbar;

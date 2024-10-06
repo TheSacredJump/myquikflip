@@ -50,7 +50,7 @@ const ContactForm = () => {
   const inputClasses = "w-full bg-gray-900 text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:border-blue-500 transition duration-300";
 
   return (
-    <section className="bg-gray-950 py-20 px-4">
+    <section id="contact" className="bg-gray-950 py-20 px-4">
       <div className="max-w-3xl mx-auto">
         <motion.h2 
           className="text-4xl font-bold text-white mb-8 text-center"
