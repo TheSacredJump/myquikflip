@@ -135,14 +135,7 @@ const FAQ = () => {
           <p className="text-center text-gray-400 mt-8">No matching questions found. Please try a different search term.</p>
         )}
 
-        <motion.p
-          className="text-center text-gray-400 mt-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          Can't find what you're looking for? <a href="/contact" className="text-blue-400 hover:text-blue-300">Contact our support team</a>.
-        </motion.p>
+        
       </div>
     </div>
   );
