@@ -4,9 +4,22 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
-const Navbar = () => {
+interface NavLinkProps {
+  href: string;
+  children: React.ReactNode;
+  isScrolled: boolean;
+  itemVariants: Variants;
+}
+
+interface MobileNavLinkProps {
+  href: string;
+  children: React.ReactNode;
+  isScrolled: boolean;
+}
+
+const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -16,26 +29,18 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    // Ensure dark mode is always applied
     document.documentElement.classList.add('dark');
   }, []);
 
-  const navbarVariants = {
+  const navbarVariants: Variants = {
     hidden: { opacity: 0, y: -50 },
     visible: { 
       opacity: 1, 
@@ -48,7 +53,7 @@ const Navbar = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: -20 },
     visible: { 
       opacity: 1, 
@@ -121,54 +126,54 @@ const Navbar = () => {
   );
 };
 
-const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, targetId: string) => {
-    e.preventDefault();
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop - 80, // Adjust this value based on your navbar height
-        behavior: 'smooth'
-      });
-    }
-  };
+const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+  e.preventDefault();
+  const targetElement = document.getElementById(targetId);
+  if (targetElement) {
+    window.scrollTo({
+      top: targetElement.offsetTop - 80,
+      behavior: 'smooth'
+    });
+  }
+};
 
-const HomeLink = ({ isScrolled }: { isScrolled: boolean }) => (
-    <a 
-      href="/#hero" 
-      onClick={(e) => smoothScroll(e, 'hero')}
-      className="flex items-center mr-8"
-    >
-      <Image src="/lightlogo.png" alt="Logo" width={32} height={32} className="mr-2" />
-      <span className="text-2xl font-bold text-white">
-        <span className={`${isScrolled ? 'text-blue-400' : 'text-blue-500'}`}>Quik</span>Flip
-      </span>
-    </a>
-  );
+const HomeLink: React.FC<{ isScrolled: boolean }> = ({ isScrolled }) => (
+  <a 
+    href="/#hero" 
+    onClick={(e) => smoothScroll(e, 'hero')}
+    className="flex items-center mr-8"
+  >
+    <Image src="/lightlogo.png" alt="Logo" width={32} height={32} className="mr-2" />
+    <span className="text-2xl font-bold text-white">
+      <span className={`${isScrolled ? 'text-blue-400' : 'text-blue-500'}`}>Quik</span>Flip
+    </span>
+  </a>
+);
 
-const NavLink = ({ href, children, isScrolled, itemVariants}: { href: string, children: React.ReactNode, isScrolled: boolean, itemVariants: any }) => (
-    <motion.div variants={itemVariants}>
-      <a 
-        href={href} 
-        onClick={(e) => smoothScroll(e, href.replace('/#', ''))}
-        className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-          isScrolled ? 'text-white hover:text-white hover:bg-blue-500 rounded p-1 pb-1 px-2 duration-300' : 'text-white hover:text-blue-200 duration-300'
-        }`}
-      >
-        {children}
-      </a>
-    </motion.div>
-  );
-  
-  const MobileNavLink = ({ href, children, isScrolled }: { href: string, children: React.ReactNode, isScrolled: boolean }) => (
+const NavLink: React.FC<NavLinkProps> = ({ href, children, isScrolled, itemVariants }) => (
+  <motion.div variants={itemVariants}>
     <a 
       href={href} 
       onClick={(e) => smoothScroll(e, href.replace('/#', ''))}
-      className={`block px-3 py-2 rounded-md text-base font-medium ${
-        isScrolled ? 'text-blue-400 hover:bg-gray-800 hover:text-blue-300 duration-300' : 'text-white hover:bg-gray-800 hover:text-blue-300 duration-300'
+      className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+        isScrolled ? 'text-white hover:text-white hover:bg-blue-500 rounded p-1 pb-1 px-2 duration-300' : 'text-white hover:text-blue-200 duration-300'
       }`}
     >
       {children}
     </a>
-  );
+  </motion.div>
+);
+
+const MobileNavLink: React.FC<MobileNavLinkProps> = ({ href, children, isScrolled }) => (
+  <a 
+    href={href} 
+    onClick={(e) => smoothScroll(e, href.replace('/#', ''))}
+    className={`block px-3 py-2 rounded-md text-base font-medium ${
+      isScrolled ? 'text-blue-400 hover:bg-gray-800 hover:text-blue-300 duration-300' : 'text-white hover:bg-gray-800 hover:text-blue-300 duration-300'
+    }`}
+  >
+    {children}
+  </a>
+);
 
 export default Navbar;

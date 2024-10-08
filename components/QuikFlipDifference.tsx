@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Shield, Clock, RefreshCw } from 'lucide-react';
 
-const FeatureCard = ({ icon, title, description }: any) => {
+const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

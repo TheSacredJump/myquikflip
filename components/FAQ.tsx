@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, Search } from 'lucide-react';
 
-const FAQItem = ({ question, answer }: any) => {
+const FAQItem = ({ question, answer }: {question: string, answer: string}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

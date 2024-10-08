@@ -179,7 +179,6 @@ const AnimatedCard = ({ children, index }: { children: React.ReactNode; index: n
 export const Card = ({
   card,
   index,
-  layout = false,
 }: {
   card: Card;
   index: number;
@@ -188,7 +187,18 @@ export const Card = ({
   const [open, setOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { onCardClose, currentIndex } = useContext(CarouselContext);
+  const { onCardClose } = useContext(CarouselContext);
+
+  useOutsideClick(containerRef, () => handleClose());
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    onCardClose(index);
+  };
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -205,18 +215,7 @@ export const Card = ({
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
-
-  useOutsideClick(containerRef, () => handleClose());
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    onCardClose(index);
-  };
+  }, [open, handleClose]);
 
   return (
     <>

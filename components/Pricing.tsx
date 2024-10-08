@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, DollarSign, Percent, ArrowRight } from 'lucide-react';
+import { Check, Percent, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 const FeatureItem = ({ children }: { children: React.ReactNode }) => (
@@ -47,7 +47,7 @@ const PricingSection = () => {
 
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div>
-              <h4 className="text-xl font-semibold text-white mb-4">What's Included:</h4>
+              <h4 className="text-xl font-semibold text-white mb-4">What&apos;s Included:</h4>
               <ul>
                 <FeatureItem>Lightning-fast conversions</FeatureItem>
                 <FeatureItem>Bank-grade security</FeatureItem>
@@ -69,7 +69,7 @@ const PricingSection = () => {
           <div className="bg-gray-900 rounded-lg p-6 mb-8">
             <h4 className="text-lg font-semibold text-white mb-2">Example:</h4>
             <p className="text-gray-300">
-              If you convert $1,000 worth of crypto, you'll pay a $10 fee (1% of $1,000).
+              If you convert $1,000 worth of crypto, you&apos;ll pay a $10 fee (1% of $1,000).
               The remaining $990 will be available in fiat currency.
             </p>
           </div>

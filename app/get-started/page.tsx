@@ -1,12 +1,24 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Send, User, Mail, Building, CreditCard, MessageSquare } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-const Waitlist = () => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  organization: string;
+  cryptoExperience: string;
+  primaryCrypto: string;
+  interest: string;
+  message: string;
+  subscribe: boolean;
+}
+
+const Waitlist: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
     email: '',
@@ -19,14 +31,14 @@ const Waitlist = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
+  const [submitStatus, setSubmitStatus] = useState<'pending' | 'success' | 'error' | null>(null);
   const [redirectCountdown, setRedirectCountdown] = useState(3);
 
   const router = useRouter();
 
   useEffect(() => {
-    let redirectTimer: any;
-    let countdownTimer: any;
+    let redirectTimer: ReturnType<typeof setTimeout>;
+    let countdownTimer: ReturnType<typeof setInterval>;
 
     if (submitStatus === 'success' && typeof window !== 'undefined') {
       countdownTimer = setInterval(() => {
@@ -44,21 +56,21 @@ const Waitlist = () => {
     };
   }, [submitStatus, router]);
 
-  const handleChange = (e: any) => {
-    const { name, value, type, checked } = e.target;
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value, type } = e.target;
     setFormData(prevData => ({
       ...prevData,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
     }));
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
 
     try {
-      const formDataToSend = new FormData(e.target);
+      const formDataToSend = new FormData(e.currentTarget);
       
       // Correctly handle the subscribe checkbox
       formDataToSend.set('subscribe', formData.subscribe ? 'yes' : 'no');
