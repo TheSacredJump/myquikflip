@@ -52,7 +52,7 @@ const FAQ = () => {
     },
     {
       question: "How does QuikFlip's pricing work?",
-      answer: "QuikFlip charges a simple 5% fee on each conversion. This means if you convert $1,000 worth of crypto, you'll pay a $50 fee, and receive $950 in your preferred fiat currency. There are no hidden fees or subscription costs – you only pay when you use our service."
+      answer: "QuikFlip charges a simple 1% fee on each conversion. This means if you convert $1,000 worth of crypto, you'll pay a $10 fee, and receive $990 in fiat currency. There are no hidden fees or subscription costs – you only pay when you use our service."
     },
     {
       question: "Which cryptocurrencies does QuikFlip support?",

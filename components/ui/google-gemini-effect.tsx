@@ -75,7 +75,7 @@ export const GoogleGeminiEffect = ({
             </motion.span>
           ))}
         </p>
-        <p className="text-xs md:text-lg font-normal text-center text-neutral-400 mt-4 max-w-lg mx-auto mb-10">
+        <p className="text-xs md:text-lg hidden lg:block font-normal text-center text-neutral-400 mt-4 max-w-lg mx-auto mb-10">
           {descriptionWords.map((word, index) => (
             <motion.span
               key={index}
@@ -220,9 +220,14 @@ export const GoogleGeminiEffect = ({
           </filter>
         </defs>
       </svg>
-      <div className="mt-14">
+      <div className="hidden md:block md:mt-52 lg:mt-40 xl:mt-14">
         <Spline
           scene="https://prod.spline.design/KF0A8ikM7mS5cntj/scene.splinecode"
+        />
+      </div>
+      <div className="block md:hidden mt-24">
+        <Spline
+          scene="https://prod.spline.design/1HvwIxSFRUH0clS3/scene.splinecode"
         />
       </div>
     </div>

@@ -32,7 +32,7 @@ export default function Hero() {
           pathLengthFifth,
         ]}
         title="AI-Powered Tool to Convert and Utilize Crypto Instantly"
-        description="QuikFlip offers a secure, fast, and convenient way to convert crypto assets to fiat currency and buy anything you want."
+        description="QuikFlip offers a secure, fast, and convenient way to convert crypto assets to fiat currency and buy anywhere on the web."
       />
     </div>
   );

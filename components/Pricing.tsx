@@ -38,11 +38,11 @@ const PricingSection = () => {
         >
           <div className="flex items-center justify-center mb-6">
             <Percent size={48} className="text-blue-500 mr-4" />
-            <h3 className="text-3xl font-bold text-white">3% per conversion</h3>
+            <h3 className="text-3xl font-bold text-white">1% per conversion</h3>
           </div>
           
           <p className="text-center text-gray-300 mb-8">
-            We charge a simple 3% fee on the amount converted. No hidden costs, no surprises.
+            We charge a simple 1% fee on the amount converted. No hidden costs, no surprises.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-8">
@@ -69,8 +69,8 @@ const PricingSection = () => {
           <div className="bg-gray-900 rounded-lg p-6 mb-8">
             <h4 className="text-lg font-semibold text-white mb-2">Example:</h4>
             <p className="text-gray-300">
-              If you convert $1,000 worth of crypto, you'll pay a $30 fee (3% of $1,000).
-              The remaining $970 will be available in your preferred fiat currency.
+              If you convert $1,000 worth of crypto, you'll pay a $10 fee (1% of $1,000).
+              The remaining $990 will be available in fiat currency.
             </p>
           </div>
         

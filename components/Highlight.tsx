@@ -1,6 +1,7 @@
 import React from 'react'
 import { ContainerScroll } from './ui/container-scroll-animation'
 import Image from 'next/image'
+import Spline from '@splinetool/react-spline'
 
 const Highlight = () => {
   return (
@@ -17,14 +18,19 @@ const Highlight = () => {
           </>
         }
       >
-        <Image
-          src={`/linear.webp`}
-          alt="hero"
-          height={720}
-          width={1400}
+        <video
+          src='/blockchain2.mp4'
+          height={1080}
+          width={1920}
+          autoPlay
+          loop
+          muted
           className="mx-auto rounded-2xl object-cover h-full object-left-top"
           draggable={false}
         />
+        {/* <Spline
+          scene="https://prod.spline.design/Pyma7ykZHXuDPcBZ/scene.splinecode" 
+        /> */}
       </ContainerScroll>
     </div>
   )

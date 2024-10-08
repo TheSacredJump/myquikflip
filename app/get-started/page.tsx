@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, User, Mail, Building, CreditCard, MessageSquare } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const Waitlist = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,32 @@ const Waitlist = () => {
     subscribe: false
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+  const [redirectCountdown, setRedirectCountdown] = useState(3);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    let redirectTimer: any;
+    let countdownTimer: any;
+
+    if (submitStatus === 'success' && typeof window !== 'undefined') {
+      countdownTimer = setInterval(() => {
+        setRedirectCountdown((prevCount) => prevCount - 1);
+      }, 1000);
+
+      redirectTimer = setTimeout(() => {
+        router.push('/');
+      }, 3000);
+    }
+
+    return () => {
+      clearTimeout(redirectTimer);
+      clearInterval(countdownTimer);
+    };
+  }, [submitStatus, router]);
+
   const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target;
     setFormData(prevData => ({
@@ -25,21 +52,48 @@ const Waitlist = () => {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log('Submitted:', formData);
-    // Reset form fields
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      organization: '',
-      cryptoExperience: '',
-      primaryCrypto: '',
-      interest: '',
-      message: '',
-      subscribe: false
-    });
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const formDataToSend = new FormData(e.target);
+      
+      // Correctly handle the subscribe checkbox
+      formDataToSend.set('subscribe', formData.subscribe ? 'yes' : 'no');
+
+      const response = await fetch('https://getform.io/f/awngjzob', {
+        method: 'POST',
+        body: formDataToSend,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Reset form fields
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          organization: '',
+          cryptoExperience: '',
+          primaryCrypto: '',
+          interest: '',
+          message: '',
+          subscribe: false
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const containerVariants = {
@@ -228,11 +282,31 @@ const Waitlist = () => {
               whileTap={{ scale: 0.95 }}
               type='submit'
               className='w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 ease-in-out'
+              disabled={isSubmitting}
             >
-              Join Waitlist
+              {isSubmitting ? 'Submitting...' : 'Join Waitlist'}
               <Send className='ml-2 h-4 w-4' />
             </motion.button>
           </form>
+          {submitStatus === 'success' && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className='mt-4 text-green-400 text-center'
+            >
+              <p>Thank you for joining our waitlist!</p>
+              <p className='text-sm mt-2'>Redirecting to home page in {redirectCountdown} seconds...</p>
+            </motion.div>
+          )}
+          {submitStatus === 'error' && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className='mt-4 text-red-400 text-center'
+            >
+              There was an error submitting your form. Please try again.
+            </motion.p>
+          )}
         </div>
       </motion.div>
     </main>

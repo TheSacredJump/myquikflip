@@ -29,6 +29,7 @@ interface CarouselProps {
 
 type Card = {
   src: string;
+  imageUrl: string;
   title: string;
   category: string;
   content: React.ReactNode;
@@ -121,30 +122,13 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
           <div
             className={cn(
               "flex flex-row justify-start gap-4 pl-4",
-              "max-w-7xl mx-auto" // remove max-w-4xl if you want the carousel to span the full width of its container
+              "max-w-7xl mx-auto"
             )}
           >
             {items.map((item, index) => (
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.5,
-                    delay: 0.2 * index,
-                    ease: "easeOut",
-                    once: true,
-                  },
-                }}
-                key={"card" + index}
-                className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl"
-              >
+              <AnimatedCard key={`card${index}`} index={index}>
                 {item}
-              </motion.div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
@@ -166,6 +150,29 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         </div>
       </div>
     </CarouselContext.Provider>
+  );
+};
+
+const AnimatedCard = ({ children, index }: { children: React.ReactNode; index: number }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1 * index,
+        ease: "easeOut",
+      }}
+      className="last:pr-[5%] md:last:pr-[33%] rounded-3xl"
+    >
+      {children}
+    </motion.div>
   );
 };
 
@@ -199,6 +206,8 @@ export const Card = ({
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
+
+  useOutsideClick(containerRef, () => handleClose());
 
   const handleOpen = () => {
     setOpen(true);
@@ -239,7 +248,7 @@ export const Card = ({
               <Spline scene={card.src} />
             </Suspense>
           ) : (
-            <Image
+            <BlurImage
               src={card.imageUrl}
               alt={card.title}
               layout="fill"
@@ -255,7 +264,7 @@ export const Card = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4 w-full h-full"
           >
             <motion.div
               ref={containerRef}

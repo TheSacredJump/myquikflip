@@ -107,10 +107,10 @@ const Navbar = () => {
           <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${
             isScrolled ? 'bg-gray-950' : 'bg-gray-950 bg-opacity-90 backdrop-blur-sm'
           }`}>
-            <MobileNavLink href="/convert" isScrolled={isScrolled}>Convert</MobileNavLink>
-            <MobileNavLink href="/about" isScrolled={isScrolled}>About</MobileNavLink>
-            <MobileNavLink href="/how-it-works" isScrolled={isScrolled}>How It Works</MobileNavLink>
-            <MobileNavLink href="/contact" isScrolled={isScrolled}>Contact</MobileNavLink>
+            <MobileNavLink href="/#features" isScrolled={isScrolled}>Features</MobileNavLink>
+            <MobileNavLink href="/#demo" isScrolled={isScrolled}>Demo</MobileNavLink>
+            <MobileNavLink href="/#pricing" isScrolled={isScrolled}>Pricing</MobileNavLink>
+            <MobileNavLink href="/#contact" isScrolled={isScrolled}>Contact</MobileNavLink>
             <Link href="/get-started" className="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-[#212121] bg-blue-500 hover:bg-blue-600">
               Start Converting
             </Link>
