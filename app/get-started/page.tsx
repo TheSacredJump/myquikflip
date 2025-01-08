@@ -153,7 +153,7 @@ const Waitlist: React.FC = () => {
                     value={formData.firstName}
                     onChange={handleChange}
                     className='w-full pl-10 pr-3 py-2 border  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 border-gray-800 text-white transition-all duration-300 ease-in-out'
-                    placeholder='John'
+                    placeholder='Satoshi'
                     required
                   />
                   <User className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5' />
@@ -169,7 +169,7 @@ const Waitlist: React.FC = () => {
                     value={formData.lastName}
                     onChange={handleChange}
                     className='w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 border-gray-800 text-white transition-all duration-300 ease-in-out'
-                    placeholder='Doe'
+                    placeholder='Nakamoto'
                     required
                   />
                   <User className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5' />
@@ -186,7 +186,7 @@ const Waitlist: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className='w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 border-gray-800 text-white transition-all duration-300 ease-in-out'
-                  placeholder='john@example.com'
+                  placeholder='satoshi@example.com'
                   required
                 />
                 <Mail className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5' />

@@ -48,11 +48,7 @@ const FAQ = () => {
   const faqs = [
     {
       question: "What is QuikFlip?",
-      answer: "QuikFlip is a cutting-edge platform that allows you to instantly convert your cryptocurrency into fiat currency. Our service is designed to be fast, secure, and user-friendly, making it easy for you to access the value of your crypto assets in traditional currency."
-    },
-    {
-      question: "How does QuikFlip's pricing work?",
-      answer: "QuikFlip charges a simple 1% fee on each conversion. This means if you convert $1,000 worth of crypto, you'll pay a $10 fee, and receive $990 in fiat currency. There are no hidden fees or subscription costs – you only pay when you use our service."
+      answer: "QuikFlip is a cutting-edge platform that allows you customers to pay with crypto and businesses to receive in USD. Our service is designed to be fast, secure, and user-friendly, making it easy for you to access the value of your crypto assets in traditional currency."
     },
     {
       question: "Which cryptocurrencies does QuikFlip support?",
@@ -72,7 +68,7 @@ const FAQ = () => {
     },
     {
       question: "Do I need to create an account to use QuikFlip?",
-      answer: "Yes, you need to create a free account to use QuikFlip. This allows us to ensure the security of your transactions, provide you with a transaction history, and comply with necessary regulations."
+      answer: "No. If the business you are buying from is supported by QuikFlip, there is no need to create an account or sign up. However, if you are want our B2C solution, you will need to create an account to access our services."
     },
     {
       question: "What fiat currencies can I convert my crypto into?",
@@ -82,10 +78,6 @@ const FAQ = () => {
       question: "How do I receive my converted fiat currency?",
       answer: "After conversion, you can withdraw your fiat currency to your linked bank account. We also offer options for direct deposits to certain digital wallets or prepaid cards, depending on your location and preferences."
     },
-    {
-      question: "Is there a minimum or maximum conversion amount?",
-      answer: "To ensure efficiency, we have a minimum conversion amount of $10 USD (or equivalent). Our maximum conversion amount varies based on user verification level and local regulations. High-volume traders can contact us for custom limits."
-    }
   ];
 
   const filteredFAQs = faqs.filter(faq =>

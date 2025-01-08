@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
             <HomeLink isScrolled={isScrolled} />
             <div className="hidden md:flex md:space-x-8 ml-10">
               <NavLink href="/#features" isScrolled={isScrolled} itemVariants={itemVariants}>Features</NavLink>
-              <NavLink href="/#demo" isScrolled={isScrolled} itemVariants={itemVariants}>Demo</NavLink>
+              <NavLink href="/#faq" isScrolled={isScrolled} itemVariants={itemVariants}>FAQ</NavLink>
               <NavLink href="/#pricing" isScrolled={isScrolled} itemVariants={itemVariants}>Pricing</NavLink>
               <NavLink href="/#contact" isScrolled={isScrolled} itemVariants={itemVariants}>Contact</NavLink>
             </div>
@@ -113,11 +113,11 @@ const Navbar: React.FC = () => {
             isScrolled ? 'bg-gray-950' : 'bg-gray-950 bg-opacity-90 backdrop-blur-sm'
           }`}>
             <MobileNavLink href="/#features" isScrolled={isScrolled}>Features</MobileNavLink>
-            <MobileNavLink href="/#demo" isScrolled={isScrolled}>Demo</MobileNavLink>
+            <MobileNavLink href="/#faq" isScrolled={isScrolled}>FAQ</MobileNavLink>
             <MobileNavLink href="/#pricing" isScrolled={isScrolled}>Pricing</MobileNavLink>
             <MobileNavLink href="/#contact" isScrolled={isScrolled}>Contact</MobileNavLink>
             <Link href="/get-started" className="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-[#212121] bg-blue-500 hover:bg-blue-600">
-              Start Converting
+              Get Started
             </Link>
           </div>
         </motion.div>

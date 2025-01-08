@@ -69,8 +69,7 @@ const PricingSection = () => {
           <div className="bg-gray-900 rounded-lg p-6 mb-8">
             <h4 className="text-lg font-semibold text-white mb-2">Example:</h4>
             <p className="text-gray-300">
-              If you convert $1,000 worth of crypto, you&apos;ll pay a $10 fee (1% of $1,000).
-              The remaining $990 will be available in fiat currency.
+              If you pay for coffee worth $10, you will pay for $10.10 worth of the crypto of your choice (1% of $10).
             </p>
           </div>
         
@@ -85,16 +84,6 @@ const PricingSection = () => {
           </motion.button>
           </Link>
         </motion.div>
-
-        <motion.p
-          className="text-center text-gray-400 mt-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          For high-volume traders or businesses, we offer custom pricing. 
-          <a href="/contact" className="text-blue-400 hover:text-blue-300 ml-1">Contact us</a> to learn more.
-        </motion.p>
       </div>
     </section>
   );
