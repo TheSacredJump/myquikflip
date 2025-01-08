@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Features from "@/components/Features";
-import Highlight from "@/components/Highlight";
 import Promotion from "@/components/Promotion";
 import Footer from "@/components/Footer";
 import QuikFlipDifference from "@/components/QuikFlipDifference";
