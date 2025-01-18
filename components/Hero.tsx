@@ -32,7 +32,7 @@ export default function Hero() {
           pathLengthFifth,
         ]}
         title="Pay With Crypto, Receive in USD Instantly."
-        description="QuikFlip offers a secure, fast, and convenient way to buy anything anywhere with crypto."
+        description="QuikFlip offers a secure, fast, and convenient way to accept crypto payments at your stores."
       />
     </div>
   );

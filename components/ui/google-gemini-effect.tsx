@@ -68,7 +68,7 @@ export const GoogleGeminiEffect = ({
               variants={wordVariants}
               className={cn(
                 "inline-block mr-2",
-                index === titleWords.length - 1 ? "bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-emerald-500" : ""
+                index === titleWords.length - 1 ? "bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500" : ""
               )}
             >
               {word}

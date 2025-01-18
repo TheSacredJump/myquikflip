@@ -36,7 +36,7 @@ const QuikFlipDifference = () => {
   };
 
   return (
-    <section className="bg-gray-950 py-20 overflow-hidden relative">
+    <section id="difference" className="bg-gray-950 py-20 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial="hidden"
@@ -47,7 +47,7 @@ const QuikFlipDifference = () => {
             variants={titleVariants}
             className="text-4xl md:text-5xl font-bold text-white mb-4 relative inline-block"
           >
-            The QuikFlip <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 ">Difference</span>
+            The QuikFlip <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 ">Difference</span>
             {/* <motion.div
               className="absolute bottom-0 left-0 h-1 bg-blue-500"
               initial={{ width: 0 }}
@@ -59,29 +59,29 @@ const QuikFlipDifference = () => {
             variants={titleVariants}
             className="text-xl text-blue-200 mt-4"
           >
-            What sets us apart in the world of crypto-to-fiat conversions
+            What sets us apart in the world of crypro payments
           </motion.p>
         </motion.div>
         <div className="grid md:grid-cols-2 gap-8">
           <FeatureCard
             icon={<Zap size={48} />}
-            title="Lightning-Fast Conversions"
-            description="Experience near-instant crypto-to-fiat conversions, allowing you to use your funds immediately."
+            title="Lightning-Fast"
+            description="Experience near-instant crypto payment acceptances and fiat currency payouts."
           />
           <FeatureCard
             icon={<Shield size={48} />}
             title="Bank-Grade Security"
-            description="Your assets are protected with state-of-the-art encryption and multi-factor authentication."
+            description="Your business information is hidden from us. You choose how to integrate with our API."
           />
           <FeatureCard
             icon={<Clock size={48} />}
             title="24/7 Availability"
-            description="Convert your crypto anytime, anywhere. Our platform never sleeps, just like the crypto market."
+            description="Our customer support is always available to personally help with business issues and integration issues."
           />
           <FeatureCard
             icon={<RefreshCw size={48} />}
-            title="Dynamic Rate Optimization"
-            description="Our AI-powered system ensures you always get the best conversion rates available in real-time."
+            title="Optimized For You"
+            description="Our system is built to work with both in-person and online POS systems, optimizing the experience for your needs."
           />
         </div>
       </div>

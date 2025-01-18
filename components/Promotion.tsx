@@ -25,7 +25,7 @@ const WaitlistPromo = () => {
   };
 
   return (
-    <section ref={ref} className="bg-gradient-to-br from-gray-900 from-30% via-blue-900 via-55% to-gray-900 to-80% py-20 px-4 sm:px-6 lg:px-8 w-[95%] mx-auto rounded-lg overflow-hidden">
+    <section ref={ref} className="bg-gradient-to-bl from-gray-900/50 from-30% via-blue-600 via-55% to-gray-900/50 to-80% py-20 px-4 sm:px-6 lg:px-8 w-[95%] mx-auto rounded-lg overflow-hidden">
       <div className="max-w-4xl mx-auto text-center">
         <motion.h2 
           className="text-3xl md:text-5xl font-bold text-white mb-6"
@@ -43,7 +43,7 @@ const WaitlistPromo = () => {
           variants={variants}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Join our exclusive waitlist and get early access to the future of crypto-to-fiat conversions.
+          Join our exclusive waitlist and get early access to the future of crypto payments.
         </motion.p>
         <motion.div
           className="flex justify-center"

@@ -56,7 +56,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><Link href="/#features" className="hover:text-blue-400 transition-colors">Features</Link></li>
-              <li><Link href="/#faq" className="hover:text-blue-400 transition-colors">FAQ</Link></li>
+              <li><Link href="/#integration" className="hover:text-blue-400 transition-colors">Integration</Link></li>
               <li><Link href="/get-started" className="hover:text-blue-400 transition-colors">Join</Link></li>
             </ul>
           </motion.div>

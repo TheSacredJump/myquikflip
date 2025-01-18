@@ -140,7 +140,7 @@ const Waitlist: React.FC = () => {
       >
         <div className='p-8'>
           <motion.h2 variants={itemVariants} className='text-3xl font-bold text-center mb-2 text-white'>Join QuikFlip Waitlist</motion.h2>
-          <motion.p variants={itemVariants} className='text-center text-gray-300 mb-6'>Be among the first to experience seamless crypto-to-fiat conversions!</motion.p>
+          <motion.p variants={itemVariants} className='text-center text-gray-300 mb-6'>Be among the first to start accepting crypto payments!</motion.p>
           <form onSubmit={handleSubmit} className='space-y-4'>
             <motion.div variants={itemVariants} className='grid grid-cols-1 md:grid-cols-2 gap-4'>
               <div>
@@ -177,7 +177,7 @@ const Waitlist: React.FC = () => {
               </div>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <label htmlFor='email' className='block text-sm font-medium text-gray-300 mb-1'>Email Address</label>
+              <label htmlFor='email' className='block text-sm font-medium text-gray-300 mb-1'>Company Email Address</label>
               <div className='relative'>
                 <input
                   type='email'
@@ -186,14 +186,14 @@ const Waitlist: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className='w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 border-gray-800 text-white transition-all duration-300 ease-in-out'
-                  placeholder='satoshi@example.com'
+                  placeholder='satoshi@myquikflip.com'
                   required
                 />
                 <Mail className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5' />
               </div>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <label htmlFor='organization' className='block text-sm font-medium text-gray-300 mb-1'>Organization (Optional)</label>
+              <label htmlFor='organization' className='block text-sm font-medium text-gray-300 mb-1'>Organization</label>
               <div className='relative'>
                 <input
                   type='text'
@@ -203,6 +203,7 @@ const Waitlist: React.FC = () => {
                   onChange={handleChange}
                   className='w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 border-gray-800 text-white transition-all duration-300 ease-in-out'
                   placeholder='Company Name'
+                  required
                 />
                 <Building className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5' />
               </div>
@@ -253,10 +254,10 @@ const Waitlist: React.FC = () => {
                 required
               >
                 <option value=''>Select your primary interest</option>
-                <option value='Convenience'>Instant Conversions</option>
-                <option value='Rates'>Competitive Exchange Rates</option>
-                <option value='Spending'>Everyday Crypto Spending</option>
-                <option value='Integration'>Integration with Existing Wallets</option>
+                <option value='Convenience'>Want Access To Crypto Customer Base</option>
+                <option value='Rates'>Increase Sales</option>
+                <option value='Spending'>Accept Payments Globally</option>
+                <option value='Integration'>Want To Accept Crypto Without Risk Of Holding It</option>
                 <option value='Other'>Other</option>
               </select>
             </motion.div>

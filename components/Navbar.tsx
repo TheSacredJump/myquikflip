@@ -79,16 +79,16 @@ const Navbar: React.FC = () => {
             <HomeLink isScrolled={isScrolled} />
             <div className="hidden md:flex md:space-x-8 ml-10">
               <NavLink href="/#features" isScrolled={isScrolled} itemVariants={itemVariants}>Features</NavLink>
-              <NavLink href="/#faq" isScrolled={isScrolled} itemVariants={itemVariants}>FAQ</NavLink>
-              <NavLink href="/#pricing" isScrolled={isScrolled} itemVariants={itemVariants}>Pricing</NavLink>
+              <NavLink href="/#integration" isScrolled={isScrolled} itemVariants={itemVariants}>Integration</NavLink>
+              <NavLink href="/#difference" isScrolled={isScrolled} itemVariants={itemVariants}>Why Us?</NavLink>
               <NavLink href="/#contact" isScrolled={isScrolled} itemVariants={itemVariants}>Contact</NavLink>
             </div>
           </motion.div>
           <motion.div variants={itemVariants} className="hidden md:flex items-center space-x-4">
-            <Link href="/get-started" className={`inline-flex items-center px-4 py-2 border border-blue-500 text-sm font-medium rounded-md ${
+            <Link href="/log-in" className={`inline-flex items-center px-4 py-2 border border-blue-500 text-sm font-medium rounded-md ${
               isScrolled ? 'text-blue-400 bg-gray-950' : 'text-white bg-blue-500'
             } hover:bg-blue-500 hover:text-white hover:scale-105 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}>
-              Start Converting
+              Log In
             </Link>
           </motion.div>
           <motion.div variants={itemVariants} className="md:hidden flex items-center">
@@ -113,11 +113,11 @@ const Navbar: React.FC = () => {
             isScrolled ? 'bg-gray-950' : 'bg-gray-950 bg-opacity-90 backdrop-blur-sm'
           }`}>
             <MobileNavLink href="/#features" isScrolled={isScrolled}>Features</MobileNavLink>
-            <MobileNavLink href="/#faq" isScrolled={isScrolled}>FAQ</MobileNavLink>
-            <MobileNavLink href="/#pricing" isScrolled={isScrolled}>Pricing</MobileNavLink>
+            <MobileNavLink href="/#integration" isScrolled={isScrolled}>Integration</MobileNavLink>
+            <MobileNavLink href="/#difference" isScrolled={isScrolled}>Why Us?</MobileNavLink>
             <MobileNavLink href="/#contact" isScrolled={isScrolled}>Contact</MobileNavLink>
-            <Link href="/get-started" className="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-[#212121] bg-blue-500 hover:bg-blue-600">
-              Get Started
+            <Link href="/log-in" className="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-[#212121] bg-blue-500 hover:bg-blue-600">
+              Log In
             </Link>
           </div>
         </motion.div>

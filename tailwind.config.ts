@@ -67,6 +67,10 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "spin-slow": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
         blob: {
           "0%": {
             transform: "translate(0px, 0px) scale(1)"
@@ -86,6 +90,7 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "blob": "blob 7s infinite",
+        "spin-slow": "spin-slow 20s linear infinite",
       },
     },
   },
