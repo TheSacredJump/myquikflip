@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
+import { useUser } from '@clerk/nextjs'
 
 interface NavLinkProps {
   href: string;
@@ -22,6 +23,7 @@ interface MobileNavLinkProps {
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { isSignedIn } = useUser();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -85,10 +87,10 @@ const Navbar: React.FC = () => {
             </div>
           </motion.div>
           <motion.div variants={itemVariants} className="hidden md:flex items-center space-x-4">
-            <Link href="/log-in" className={`inline-flex items-center px-4 py-2 border border-blue-500 text-sm font-medium rounded-md ${
+            <Link href={isSignedIn ? "/dashboard" : "/log-in"} className={`inline-flex items-center px-4 py-2 border border-blue-500 text-sm font-medium rounded-md ${
               isScrolled ? 'text-blue-400 bg-gray-950' : 'text-white bg-blue-500'
             } hover:bg-blue-500 hover:text-white hover:scale-105 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}>
-              Log In
+              {isSignedIn ? 'Dashboard' : 'Log In'}
             </Link>
           </motion.div>
           <motion.div variants={itemVariants} className="md:hidden flex items-center">
@@ -116,8 +118,8 @@ const Navbar: React.FC = () => {
             <MobileNavLink href="/#integration" isScrolled={isScrolled}>Integration</MobileNavLink>
             <MobileNavLink href="/#difference" isScrolled={isScrolled}>Why Us?</MobileNavLink>
             <MobileNavLink href="/#contact" isScrolled={isScrolled}>Contact</MobileNavLink>
-            <Link href="/log-in" className="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-[#212121] bg-blue-500 hover:bg-blue-600">
-              Log In
+            <Link href={isSignedIn ? "/dashboard" : "/log-in"} className="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-[#212121] bg-blue-500 hover:bg-blue-600">
+              {isSignedIn ? 'Dashboard' : 'Log In'}
             </Link>
           </div>
         </motion.div>

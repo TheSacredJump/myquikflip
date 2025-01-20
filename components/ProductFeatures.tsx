@@ -15,7 +15,7 @@ const ProductLanding = () => {
             </h1>
           </div>
           <div className="w-full lg:w-1/2 relative">
-            <div className="rounded-xl overflow-hidden shadow-2xl absolute -top-5 hover:scale-105 hover:translate-y-[-50px] transition duration-300 mr-10">
+            <div className="rounded-xl overflow-hidden shadow-2xl absolute -top-5 hover:scale-105 hover:translate-y-[-50px] transition duration-300 lg:mr-10">
               <img
                 src="/dashboard.png"
                 alt="Dashboard Preview"
