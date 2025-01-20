@@ -4,7 +4,6 @@ import {
     ClerkProvider,
     SignedIn,
     SignedOut,
-    UserButton
   } from '@clerk/nextjs'
 import Link from 'next/link'
 

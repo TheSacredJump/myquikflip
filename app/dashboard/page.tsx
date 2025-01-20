@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Layout, CreditCard, Key, FileText, Bell } from 'lucide-react';
+import { Layout, Key, FileText, Bell } from 'lucide-react';
 import TransactionDashboard from '@/components/TransactionDashboard';
 import ApiKeysManager from '@/components/ApiKeysManager';
 import Documentation from '@/components/Documentation';
