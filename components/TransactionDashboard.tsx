@@ -18,7 +18,7 @@ const TransactionDashboard = () => {
   const [stats, setStats] = useState({
     todaySales: 0,
     pendingOrders: 0,
-    availableForPayout: 0
+    totalSales: 0
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -66,23 +66,23 @@ const TransactionDashboard = () => {
   const calculateStats = () => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-
+  
     const todayTransactions = transactions.filter(tx => 
       new Date(tx.created_at) >= today && tx.status === 'confirmed'
     );
-
+  
     const pendingTransactions = transactions.filter(tx => 
       tx.status === 'pending'
     );
-
-    const pendingPayouts = transactions.filter(tx =>
-      tx.status === 'confirmed' && tx.payout_status === 'pending'
+  
+    const confirmedTransactions = transactions.filter(tx =>
+      tx.status === 'confirmed'
     );
-
+  
     setStats({
       todaySales: todayTransactions.reduce((sum, tx) => sum + tx.amount_usd, 0),
       pendingOrders: pendingTransactions.length,
-      availableForPayout: pendingPayouts.reduce((sum, tx) => sum + tx.amount_usd, 0)
+      totalSales: confirmedTransactions.reduce((sum, tx) => sum + tx.amount_usd, 0)
     });
   };
 
@@ -165,12 +165,13 @@ const TransactionDashboard = () => {
 
         <Card className="p-6 bg-neutral-900 border-neutral-800">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm font-medium text-neutral-400">Available for Payout</h3>
+            <h3 className="text-sm font-medium text-neutral-400">Total Sales</h3>
             <ArrowUpRight className="text-green-400" size={20} />
           </div>
           <p className="text-2xl font-bold text-neutral-100">
-            ${stats.availableForPayout.toLocaleString()}
+            ${stats.totalSales.toLocaleString()}
           </p>
+          <p className="text-sm text-green-400 mt-2">All confirmed transactions</p>
         </Card>
       </div>
 
