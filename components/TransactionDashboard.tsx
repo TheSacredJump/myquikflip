@@ -80,9 +80,9 @@ const TransactionDashboard = () => {
     );
   
     setStats({
-      todaySales: todayTransactions.reduce((sum, tx) => sum + tx.amount_usd, 0),
+      todaySales: todayTransactions.reduce((sum, tx) => sum + tx.amount_usd*0.995, 0),
       pendingOrders: pendingTransactions.length,
-      totalSales: confirmedTransactions.reduce((sum, tx) => sum + tx.amount_usd, 0)
+      totalSales: confirmedTransactions.reduce((sum, tx) => sum + tx.amount_usd*0.995, 0)
     });
   };
 
@@ -214,10 +214,10 @@ const TransactionDashboard = () => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-neutral-100">
-                      {transaction.amount_crypto} {transaction.crypto_currency}
+                      {transaction.amount_crypto*0.995} {transaction.crypto_currency}
                     </div>
                     <div className="text-sm text-neutral-400">
-                      ${transaction.amount_usd.toLocaleString()}
+                      ${((transaction.amount_usd)*0.995).toLocaleString()}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">

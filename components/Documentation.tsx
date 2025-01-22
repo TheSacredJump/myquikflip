@@ -59,15 +59,15 @@ const Documentation = () => {
 <script>
 async function handleCryptoPayment() {
   try {
-    const response = await fetch('https://api.quikflip.com/checkout', {
+    const response = await fetch('https://myquikflip.com/api/checkout', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-API-Key': 'YOUR_API_KEY'  // Get this from your API Keys page
       },
       body: JSON.stringify({
-        amount: "99.99", // Your order amount
-        currency: "USD",
-        merchant_id: "YOUR_MERCHANT_ID" // Your Stripe Connected Account ID
+        amount: "99.99",    // Your order amount
+        currency: "USD"     // Currency code
       })
     });
 
@@ -95,15 +95,15 @@ async function handleCryptoPayment() {
 <script>
 async function handleCryptoPayment() {
   try {
-    const response = await fetch('https://api.quikflip.com/checkout', {
+    const response = await fetch('https://myquikflip.com/api/checkout', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-API-Key': 'YOUR_API_KEY'  // Get this from your API Keys page
       },
       body: JSON.stringify({
-        amount: "99.99", // Your order amount
-        currency: "USD",
-        merchant_id: "YOUR_MERCHANT_ID" // Your Stripe Connected Account ID
+        amount: "99.99",    // Your order amount
+        currency: "USD"     // Currency code
       })
     });
 
