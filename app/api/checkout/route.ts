@@ -1,7 +1,7 @@
 // app/api/checkout/route.ts
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
-import { verifyApiKey } from '@/lib/utils';
+import { verifyApiKey, storeTransaction } from '@/lib/utils';
 import { Client, resources } from 'coinbase-commerce-node';
 
 // Initialize Coinbase client
@@ -36,8 +36,8 @@ export async function POST(req: Request) {
             }
         });
 
-        // // Store transaction
-        // await storeTransaction(charge);
+        // Store transaction
+        await storeTransaction(charge);
 
         return NextResponse.json({ charge });
     } catch (error) {

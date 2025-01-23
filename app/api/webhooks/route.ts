@@ -61,13 +61,6 @@ export async function POST(req: Request) {
         );
 
         if (event.type === "charge:pending") {
-            console.log("Charge created!");
-            const chargeData = event.data;
-            // Store transaction
-            await storeTransaction(chargeData);
-        }
-
-        if (event.type === "charge:confirmed") {
             console.log("Charge confirmed!");
             const amount = event.data.pricing.local.amount;
             const merchant_id = event.data.metadata.merchant_id;
