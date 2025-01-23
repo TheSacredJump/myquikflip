@@ -1,5 +1,6 @@
 // app/api/webhooks/route.ts
 import { NextResponse } from 'next/server';
+import { storeTransaction } from '@/lib/utils';
 import { headers } from 'next/headers';
 import { Webhook } from 'coinbase-commerce-node';
 import stripe from '@/lib/stripe';  // You'll need to create this
@@ -58,6 +59,13 @@ export async function POST(req: Request) {
             signature,
             process.env.COINBASE_WEBHOOK_SECRET!
         );
+
+        if (event.type === "charge:pending") {
+            console.log("Charge created!");
+            const chargeData = event.data;
+            // Store transaction
+            await storeTransaction(chargeData);
+        }
 
         if (event.type === "charge:confirmed") {
             console.log("Charge confirmed!");
