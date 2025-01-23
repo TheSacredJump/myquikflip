@@ -60,6 +60,9 @@ export async function POST(req: Request) {
             process.env.COINBASE_WEBHOOK_SECRET!
         );
 
+        console.log(event);
+        console.log(event.type);
+
         if (event.type === "charge:pending") {
             console.log("Charge confirmed!");
             const amount = event.data.pricing.local.amount;
@@ -83,7 +86,7 @@ export async function POST(req: Request) {
             await updateTransactionStatus(chargeId, 'confirmed', 'completed');
         }
 
-        return NextResponse.json({ received: true });
+        return NextResponse.json({ received: true }, { status: 200 });
     } catch (error) {
         console.error('Webhook error:', error);
         return NextResponse.json(
