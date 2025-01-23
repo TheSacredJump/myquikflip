@@ -121,8 +121,8 @@ export async function POST(req: Request) {
                 destination: merchant_id,
             });
 
-            // Notify merchant
-            await notifyMerchant(merchant_id, event.data);
+            // // Notify merchant
+            // await notifyMerchant(merchant_id, event.data);
 
             // Update payout status
             await updateTransactionStatus(chargeId, 'confirmed', 'completed');
